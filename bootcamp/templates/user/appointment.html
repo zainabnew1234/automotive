@@ -1,0 +1,139 @@
+<!doctype>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="robots" content="index,follow"/>
+        <meta name="keywords" content="KAZ automobile workshop auto repair, auto repair lagos "/>
+        <meta name="description" content="KAZ automobile workshop  provides the best automotive electrical repair, brake repair &amp; auto repair in Lagos  &amp;  Call now for an appointment."/>
+		<meta name='author' content='Kappo Zainab'>
+		<title>KAZ Automobile Workshop</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+		<style type="text/css">
+			a{
+				color: white;
+			}
+		</style>
+	</head>
+	<!--div container-->
+	<body>
+	<div class="container-fluid">
+
+		<nav class="navbar fixed-top navbar-expand-lg  fixed-top" style='background-color:green'>
+			<div class="container">
+			  <div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">HOME</a>
+					  </li>
+	
+				   <li class="nav-item">
+					<a class="nav-link" href="/appointment">APPOINTMENT</a>
+				  </li>
+				 
+				  <li class="nav-item">
+					<a class="nav-link" href="/order">ORDER</a>
+				  </li>  
+				   
+				 <li class="nav-item">
+					<a class="nav-link" href="/orders">MY ORDERS</a>
+				  </li>
+				   
+
+				 <li class="nav-item">
+					<a class="nav-link" href="/dashboard">PROFILE</a>
+				  </li>
+
+
+				  <li class="nav-item">
+					<a class="nav-link" href="/payment">PAYMENT</a>
+				  </li>
+				 
+				  <li class="nav-item">
+					<a class="nav-link" href="/logout">LOGOUT</a>
+				  </li>
+				 
+				</ul>
+			  </div>
+			</div>
+		  </nav><br><br><br><br>
+</div>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+		<a href="/"><p style="color: green;font-weight: bold;font-size: xx-large;font-style: italic;padding-left:80px;">AUTO
+	  <span style="color: black;">motive</span></p>
+	  </a>
+	</div>
+	</div>
+	</div>
+
+
+				<h1 style="color: green;">APPOINTMENT</h1><br>
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+				<form method="post" action="">
+					<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+				 <div>
+					<h2>APPOINTMENT DETAILS</h2>
+					<label>Appointment for?</label>
+					<select name="appoint">
+						<option value="rep">Repairs</option>
+						<option value="serve">Servicing</option>
+						<option value="parts">Change of body parts</option>
+					</select><br><br>
+
+					<label>Service type</label>
+					<select name="kind">
+						<option value="home">Home</option>
+						<option value="fdn">fdn</option>
+					</select><br><br>
+
+
+					<label>Ticket id</label>
+					<select name="tick">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select><br><br>
+
+
+					<textarea placeholder="Reason for scheduling an appointment" name="reason"></textarea><br><br>
+					
+				
+                 <button class="btn btn-outline-success">Submit</button>
+			</form>
+		</div>
+		<div class="col-md-3"></div>
+		</div>
+	
+
+	<div class="row" style="background-color: green; padding: 30px;">
+	<div class="col-md-3">
+		<div>
+			<a href="/"><p style="color: black;font-weight: bold;font-size: xx-large;font-style: italic;padding-left:80px;">AUTO
+		  <span style="color: black;">motive</span></p>
+		  </a>
+		</div>
+				</div> 
+				<div class="col-3">
+					<h4>Contact Us via email @ zainabkappo@yahoo.com</h4>
+				</div>
+				<div class="col-3">
+					<h3>CALL US:(+234)4705 3095</h3>
+					<p>Mon - Fri: 8:00am - 5:00pm</p>
+				</div>
+				<div class="col-3">
+					<a href="/appointment"><button class="btn btn-success" style="margin: 30px;">SCHEDULE AN APPOINTMENT</button></a>
+				</div>
+			</div>
+			</div>
+		</div><br><br>
+		<div><p style="text-align: center;">Copyright@2021</p></div>
+		</body>
+		</html>

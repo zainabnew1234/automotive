@@ -1,0 +1,151 @@
+<!doctype>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="robots" content="index,follow"/>
+        <meta name="keywords" content="KAZ automobile workshop auto repair, auto repair lagos "/>
+        <meta name="description" content="KAZ automobile workshop  provides the best automotive electrical repair, brake repair &amp; auto repair in Lagos  &amp;  Call now for an appointment."/>
+		<meta name='author' content='Kappo Zainab'>
+		<title>KAZ Automobile Workshop</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+		<style type="text/css">
+		
+		
+      a{
+		  color: white;
+	  }
+
+
+	  #pict{
+           	background-image: url("{{url_for('static',filename='images/repair.jpg')}}");
+           	background-size: cover;
+           	border: 1px solid black;
+           	background-repeat:no-repeat;
+           	display: flex;
+           	width: 100%;
+           height: 400px;
+           	position: relative;
+           }
+		
+		
+		</style>
+		<nav class="navbar fixed-top navbar-expand-lg  fixed-top" style='background-color:green'>
+			<div class="container">
+			  <div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">HOME</a>
+					  </li>
+				  
+				   <li class="nav-item">
+					<a class="nav-link" href="/direction">DIRECTION</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="/contact">CONTACT</a>
+				  </li>
+				   
+				 <li class="nav-item">
+					<a class="nav-link" href="/sign">SIGN UP</a>
+				  </li>
+				   
+
+				 <li class="nav-item">
+					<a class="nav-link" href="/login">LOGIN</a>
+				  </li>
+
+
+				  <li class="nav-item">
+					<a class="nav-link" href="/admin">ADMIN</a>
+				  </li>
+				 
+				</ul>
+			  </div>
+			</div>
+		  </nav><br><br><br><br>
+
+
+		  <div class="container-fluid">
+			 
+			<div>
+				<a href="/"><p style="color: green;font-weight: bold;font-size: xx-large;font-style: italic;padding-left:80px;">AUTO
+			  <span style="color: black;">motive</span></p>
+			  </a>
+			</div>
+			</div>
+<div class="container">
+	<h1 style="color: green;">SIGN UP</h1><br>
+	<div class="row">
+		
+		<div class="col-md-5" id="pict"></div>
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<a href="/login" style="color: blue; padding-left: 350px;">Already have an account?</a>
+			<form method="post" action="">
+				{{ up.csrf_token() }}
+			  {%if up.firstname.errors: %}
+				{{ up.firstname.errors }}	
+				{% endif%}
+              {% if up.firstname.errors:%}
+				{{ up.lastname.errors }}
+				{% endif %}	
+				{% if up.number.errors: %}
+				{{ up.number.errors }}
+				{% endif %}
+				{%if up.password.errors %}
+				{{ up.password.errors }}
+				{% endif %}
+				{% if up.mail.errors %}
+				{{ up.mail.errors }}
+				{% endif %}
+
+			<p>  {{ up.firstname(class_='form-control',placeholder_='Firstname') }}</p>
+			<p>  {{ up.lastname(class_='form-control',placeholder_='Lastname') }}</p>
+			<p>  {{ up.number(class_='form-control',placeholder_='Phone Number') }}</p>	
+			<p>  {{ up.mail(class_='form-control',placeholder_='Email address') }}</p>
+			<p> {{up.username(class_='form-control',placeholder_='Username')}}</p>
+			<span style="color: red;">{% set o = get_flashed_messages() %}
+				{% for n in o %} 
+				{{n}}
+				{% endfor %}
+			</span>
+			<p>  {{ up.password(class_='form-control',placeholder_='Password') }} {{up.password.id_code}}</p>
+				<p>  {{ up.confword(class_='form-control',placeholder_='Confirm Password') }}</p>	
+				<p style="color: red;">{% set p = get_flashed_messages() %}
+					{% for z in p %} 
+					{{z}}
+					{% endfor %}
+					</p>
+			<p> {{up.address(class_='form-control',placeholder_='Address')}}</p>
+			<p> {{ up.submit(class_='btn btn-outline-success btn-block') }}</p>
+			</form>
+		</div>
+		
+		</div>
+</div><br><br>
+
+<div class="row" style="background-color: green; padding: 30px;">
+	<div class="col-md-3">
+		<div>
+			<a href="/"><p style="color: black;font-weight: bold;font-size: xx-large;font-style: italic;padding-left:80px;">AUTO
+		  <span style="color: black;">motive</span></p>
+		  </a>
+		</div>
+				</div> 
+				<div class="col-md-3">
+					<h4>Contact Us via email @ zainabkappo@yahoo.com</h4>
+				</div>
+				<div class="col-md-3">
+					<h3>CALL US:(+234)4705 3095</h3>
+					<p>Mon - Fri: 8:00am - 5:00pm</p>
+				</div>
+				<div class="col-md-3">
+					<a href="/appointment"><button class="btn btn-success" style="margin: 30px;">SCHEDULE AN APPOINTMENT</button></a>
+				</div>
+			</div>
+			</div>
+		</div><br><br>
+		<div><p style="text-align: center;">Copyroght@2021</p></div>
+		</body>
+		</html>

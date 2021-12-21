@@ -1,0 +1,237 @@
+"""this handles all database communications"""
+import datetime
+from rentalapp import db
+
+
+
+from flask_wtf import FlaskForm
+from wtforms import StringField,PasswordField,BooleanField,SubmitField,SelectField,TextAreaField
+from wtforms import validators
+from wtforms.fields.choices import RadioField, SelectField
+from wtforms.validators import DataRequired, Email, Length
+from wtforms.widgets.core import PasswordInput
+
+
+class Signup(FlaskForm):
+     firstname = StringField("Firstname: ", validators=[DataRequired()])
+     lastname = StringField("Lastname: ", validators=[DataRequired()])
+     state=StringField("State:",validators=[DataRequired()])
+     matric=StringField("Matric number:",validators=[DataRequired()])
+     number = StringField("Phone number: ", validators=[DataRequired(),Length(min=11)])
+     mail = StringField("Email: ",validators=[Email()])
+     sel=SelectField('Select',choices=[('sel','Student'),('sel','Lanlord')])
+     username=StringField("Username: ",validators=[DataRequired()])
+     password = PasswordField("Password ",validators=[PasswordInput()])
+     address =TextAreaField("Address: ",validators=[DataRequired()])
+     submit = SubmitField("Sign In")
+
+
+
+class Post(db.Model):
+    _tablename_ = 'landlord'
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
+    lanlord_name = db.Column(db.String(255),nullable=False)
+    landlord_phone = db.Column(db.Text(),nullable=False)
+    lanlord_date = db.Column(db.DateTime(),default=datetime.datetime.utcnow)
+
+class Student(db.Model):
+    _tablename_ = 'student'
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
+    student_name = db.Column(db.String(255),nullable=False)
+    student_phone = db.Column(db.Text(),nullable=False)
+    student_email = db.Column(db.String(255),nullable=False)
+    student_state = db.Column(db.String(255),nullable=False)
+    student_matric = db.Column(db.Integer(),nullable=False)
+    student_col = db.Column(db.String(255),nullable=False)
+    student_date = db.Column(db.DateTime(),default=datetime.datetime.utcnow)
+
+
+class Property(db.Model):
+    _tablename_ = 'property'
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
+    property_name = db.Column(db.String(255),nullable=False)
+    property_locatio = db.Column(db.String(255),nullable=False)
+    number_rooms = db.Column(db.Integer(),nullable=False)
+    student_id = db.Column(db.Integer(),db.ForeignKey('student.id'))
+    landlord_id = db.Column(db.Integer(),db.ForeignKey('landlord.id'))
+    property_date = db.Column(db.DateTime(),default=datetime.datetime.utcnow)
+    lord=db.relationship('Post',backref='land')
+    tud=db.relationship('Student',backref='ent')
+
+
+class Duration(db.Model):
+    _tablename_ = 'duration'
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
+    landlord_id = db.Column(db.Integer(),nullable=False)
+    duration_date = db.Column(db.DateTime(),default=datetime.datetime.utcnow)
+    duration = db.Column(db.Integer(),nullable=False)
+    number_of_student = db.Column(db.Integer(),nullable=False)
+    location = db.Column(db.String(255),nullable=False)
+    property_name = db.Column(db.String(255),nullable=False)
+    student_id = db.Column(db.Integer(),db.ForeignKey('student.id'))
+    property_id = db.Column(db.Integer(),db.ForeignKey('property.id'))
+    prop=db.relationship('Property',backref='proper')
+    stud=db.relationship('Student',backref='dent')
+
+
+
+
+
+
+
+    #home
+
+    <!doctype html>
+<html>
+<head>
+<title>Colors and Fonts UPDATED ADDED</title>
+
+<link rel="preconnect" href="{{url_for('static',filename='https://fonts.googleapis.com')}}">
+<link rel="preconnect" href="{{url_for('static',filename='https://fonts.gstatic.com')}}" crossorigin>
+<link href="{{url_for('static',filename='https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200&display=swap')}}" rel="stylesheet"> 
+
+
+<style type='text/css'>
+@font-face{
+font-family:moat;
+src:url("fonts/biorhyme-bold-webfont.woff") format('woff'),
+url("fonts/biorhyme-bold-webfont.woff2") format('woff2')
+}
+
+ul li{
+	list-style-image:url('images/star.png');
+}
+ p{
+ 
+ font-size:inherit;
+ font-family:moat, sans-serif ;
+ }
+ a{
+ color:inherit;
+ background-color:#717744;
+ padding:12px;
+font-family:karla, monospace; 
+ }
+ #menu{
+ padding-top:20px;
+	height:40px;
+	text-align:center;
+	 color:#CDC5B4;
+ background-color:#373D20;
+ }
+ #slogan{
+ height:200px;
+ text-align:center;
+ line-height:160px;
+ color:#373D20;
+ background-color:#BCBD8B;
+ }
+ h2{
+ color:#766153;
+ font-family: 'Gemunu Libre', sans-serif;
+ font-family:moat;
+ }
+ #text{
+	padding:10px;
+	width:67%;
+	float:right;
+ }
+ #profile{
+ padding:10px;
+	width:28%;
+	float:left;
+	
+ }
+ .content{
+ background-color:#EFF1ED;
+ }
+ #footer{
+ height:40px;
+ text-align:center;
+ color:#373D20;
+ background-color:#BCBD8B;
+ }
+ .box{
+ text-align:center;
+ float:left; width:32%;
+ }
+ </style>
+</head>
+<body>
+<div class='wrapper'>
+
+<div id='menu'>
+<a href=''>Home</a>
+<a href=''>Register</a>
+<a href=''>Sign In AS STUDENT</a>
+<a href=''>Sign In AS LANDLORD</a>
+<a href=''>ABOUT US</a>
+<a href=''>MY DASHBOARD</a>
+</div>
+<div id='slogan'>
+	<h1 style='margin:0px; padding:0px; font-size:2rem'><i> RENTAL SERVICES</i></h1>
+	 
+</div>
+<div class='content'>
+	<div id='profile'>
+	<h1>WELCOME!</h1>
+	<img src='pix.jpg' width='100%'>
+	</div>
+	<div id='text'>
+	<div>
+	<h2>MY RENTAL WEBSITE</h2> 
+	<p style='font-family:"Lucida Handwriting"'>You are welcome to a unique rental website , this page simply talks checking houses and  securing the best choice, this would help you see and choose the choice of your own. You can check from time to time</p>
+		<p style='font-family:corbel'>You are welcome to a unique rental website , this page simply talks checking houses and  securing the best choice, this would help you see and choose the choice of your own. You can check from time to time</p>
+			<p>You are welcome to a unique rental website , this page simply talks checking houses and  securing the best choice, this would help you see and choose the choice of your own. You can check from time ti time</p>
+		<p align='right'><a href='#'>Read More </a></p>
+	</div>
+	<div id='portfolio'> 
+		<h2 class='highlight'>MY DASHBOARD</h2>
+		 
+		<div class='box'>
+		<img src='copy.jpeg'> 
+		<p align='center'>	RENTAL WEBSITE</p>
+		</div>
+		<div class='box'>
+		<img src='copy2.jpeg'>
+		<p align='center'>RENTAL WEBSITE</p>
+		</div>
+		<div class='box'>
+		<img src='copy.jpeg'> 
+		<p align='center'>HOSTELS</p>
+		</div>
+		<p style='clear:both'></p>
+	</div>
+	</div>
+	<p style='clear:both'></p>
+</div>
+<div id='footer'>Designed by MATHAYO </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+#imagediv{
+    background-image: url(images/slide-1.jpg);
+    background-size: cover;
+    border: 1px solid black;
+    background-repeat:no-repeat;
+    display: flex;
+    width: 100%;
+height: 600px;
+    position: relative;
+}
+
+#fam{
+    background-image: url("{{url_for('static',filename='images/family-2.jpg')}}");
+    background-size: cover;
+    border: 1px solid black;
+    background-repeat:no-repeat;
+    display: flex;
+    width: 100%;
+height: 400px;
+    position: relative;
+}

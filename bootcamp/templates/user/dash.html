@@ -1,0 +1,198 @@
+<!doctype>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="robots" content="index,follow"/>
+        <meta name="keywords" content="KAZ automobile workshop auto repair, auto repair lagos "/>
+        <meta name="description" content="KAZ automobile workshop  provides the best automotive electrical repair, brake repair &amp; auto repair in Lagos  &amp;  Call now for an appointment."/>
+		<meta name='author' content='Kappo Zainab'>
+		<title>KAZ Automobile Workshop</title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+
+		<style type="text/css">
+
+			a{
+				color: white;
+			}
+			
+			
+			#pict{
+           	background-image: url("{{url_for('static',filename='images/10-best-mechanic-apps.jpg')}}");
+           	background-size: cover;
+           	border: 1px solid black;
+           	background-repeat:no-repeat;
+           	display: flex;
+           	width: 100%;
+           height: 400px;
+           	position: relative;
+           }
+			  </style>
+	</head>
+	<body>
+	<!--div container-->
+	<div class="container-fluid">
+   <div class="row">
+	   <div class="col-4" style="color: white;">AUTO motive</div>
+	   <div class="col-8">
+		<nav class="navbar fixed-top navbar-expand-lg  fixed-top" style='background-color:green'>
+			<div class="container">
+			  <div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">HOME</a>
+					  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="/appointment">APPOINTMENT</a>
+				  </li>
+
+				  <li class="nav-item">
+					<a class="nav-link" href="/order">ORDER</a>
+				  </li>
+
+				 <li class="nav-item">
+					<a class="nav-link" href="/orders">MY ORDERS</a>
+				  </li>
+
+
+				  <li class="nav-item">
+					<a class="nav-link" href="/transaction">TRANSACTIONS</a>
+				  </li>
+
+				  <li class="nav-item">
+					<a class="nav-link" href="/logout">LOGOUT</a>
+				  </li>
+
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+		  </div>
+		  </div><br><br><br><br>
+		  </div>
+		  <div class="container-fluid">
+			<div class="row">
+                <div class="col-md-6">
+				<a href="/"><p style="color: green;font-weight: bold;font-size: xx-large;font-style: italic;padding-left:80px;">AUTO
+			  <span style="color: black;">motive</span></p>
+			  </a>
+			</div>
+<div class="col-md-6" style="padding-left:300px">
+   <h2> Welcome,{{data.customer_username}}</h2>
+   <p style="color: green;">		
+	{% set g = get_flashed_messages() %}
+	{% for z in g %}
+	{{z }}</div>
+	{% endfor %}
+</p>
+</div>
+			</div>
+            </div>
+	<div class="container-fluid">
+        <div class="row">
+			<div class="col-md-4" id="pict">
+			</div>
+			<div class="col-md-8">
+					<div class="row">
+						<div class="col-xl-3 col-sm-6 mb-3">
+						  <div class="card text-white bg-primary o-hidden h-100">
+							<div class="card-body">
+							  <div>
+								<i class="fa fa-users" style='font-size:24px'></i>
+							  </div>
+							  <div class="mr-5"><a href="{{url_for('orders')}}" style="color: white;" >My Orders</a></div>
+							</div>
+							<a class="card-footer text-white clearfix small z-1" href="/orders">
+							
+							  <span class="float-left">View Details</span>
+							  <span class="float-right">
+								<i class="fa fa-angle-right"></i>
+							  </span>
+							</a>
+						  </div>
+						</div>
+						<div class="col-xl-3 col-sm-6 mb-3">
+						  <div class="card text-white bg-warning o-hidden h-100">
+							<div class="card-body">
+							  <div>
+								<i class="fa fa-list" style="font-size: 24px;"></i>
+							  </div>
+							  <div class="mr-5"><a href="{{url_for('transaction')}}" style="color: white;">All Transactions</a></div>
+							</div>
+							<a class="card-footer text-white clearfix small z-1" href="/transaction">
+							  <span class="float-left">View Details</span>
+							  <span class="float-right">
+								<i class="fa fa-angle-right"></i>
+							  </span>
+							</a>
+						  </div>
+						</div>
+					
+						<div class="col-xl-3 col-sm-6 mb-3">
+						  <div class="card text-white bg-danger o-hidden h-100">
+							<div class="card-body">
+							  <div>
+								<i class="fa  fa-ban"></i>
+							  </div>
+							  <div class="mr-5">Failed Transactions!</div>
+							</div>
+							<a class="card-footer text-white clearfix small z-1" href="">
+							  <span class="float-left">View Details</span>
+							  <span class="float-right">
+								<i class="fa fa-angle-right"></i>
+							  </span>
+							</a>
+						  </div>
+						</div>
+
+						<div class="col-xl-3 col-sm-6 mb-3">
+							<div class="card text-white bg-primary o-hidden h-100">
+							  <div class="card-body">
+								<div>
+								  <i class="fa fa-users" style='font-size:24px'></i>
+								</div>
+								<div class="mr-5"><a href="{{url_for('appoint')}}" style="color: white;" >My Appointments</a></div>
+							  </div>
+							  <a class="card-footer text-white clearfix small z-1" href="/appoint">
+							  
+								<span class="float-left">View Details</span>
+								<span class="float-right">
+								  <i class="fa fa-angle-right"></i>
+								</span>
+							  </a>
+							</div>
+						  </div>
+
+					  </div>
+
+		
+   </div>
+
+        </div>
+    </div><br><br>
+
+
+		<div class="row" style="background-color: green; padding: 30px;">
+			<div class="col-md-3">
+				<div>
+					<a href="/"><p style="color: black;font-weight: bold;font-size: xx-large;font-style: italic;padding-left:80px;">AUTO
+				  <span style="color: black;">motive</span></p>
+				  </a>
+				</div>
+						</div> 
+						<div class="col-md-3">
+							<h4>Contact Us via email @ zainabkappo@yahoo.com</h4>
+						</div>
+						<div class="col-md-3">
+							<h3>CALL US:(+234)4705 3095</h3>
+							<p>Mon - Fri: 8:00am - 5:00pm</p>
+						</div>
+						<div class="col-md-3">
+							<a href="/appointment"><button class="btn btn-success" style="margin: 30px;">SCHEDULE AN APPOINTMENT</button></a>
+						</div>
+					</div>
+					</div><br><br>
+				<div><p style="text-align: center;">Copyright@2021</p></div>
+				</body>
+				</html>

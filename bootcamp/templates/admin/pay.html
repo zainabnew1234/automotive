@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin Page</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static',filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+  
+<style type="text/css">
+.nav-link{ color:white;}
+.nav-link:hover{
+	color:grey;
+}
+</style>
+
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg  fixed-top" style='background-color:green'>
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/adminboard">Dashboard</a>
+          </li>
+		   <li class="nav-item">
+            <a class="nav-link" href="/adminpage">View All Members</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="/custorder">Customer Report</a>
+          </li>
+		   
+          <li class="nav-item">
+            <a class="nav-link" href="/report">Payment Report</a>
+          </li>
+		   
+         <li class="nav-item">
+            <a class="nav-link" href="/adminlogout">Logout</a>
+          </li>
+           
+         
+        </ul>
+      </div>
+    </div>
+  </nav><br><br>
+
+  <!-- Page Content -->
+  <link type='text/css' rel='stylesheet' href='{{url_for("static",filename="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")}}'>
+  <div class="container" style='min-height:500px'>
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+      <small>All payments</small>
+    </h1>
+
+     
+    <!-- Content Row -->
+    <div class="row">
+     
+      <!-- Content Column -->
+      <div class="col-lg-12 mb-4">
+     
+	   <table class="table table-striped">
+     
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Reference Number</th>
+      <th scope="col">Payment Type</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+    {% for z in lot %}
+    <tr>
+   <td>{{ loop.index }}</td>
+   <td>{{z[0].customer_name}}</td>
+   <td>{{z[0].customer_email}}</td>
+   <td>{{z[0].customer_mobile}}</td>
+
+   <td>{{z[1].payment_ref}}</td>
+  <td>{{z[1].payment_type}}</td>
+  <td>{{z[1].payment_amt}}</td>
+  <td>{{z[1].payment_date}}</td>
+   </tr>
+   {% endfor %}
+ 
+  </tbody>
+</table>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
