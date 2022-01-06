@@ -59,3 +59,11 @@ class Insure(db.Model):
     insurance_amount = db.Column(db.Numeric(10,3),nullable=False)
     insurance_type = db.Column(db.String(45),nullable=False)
     insurance_description = db.Column(db.String(45),nullable=False)
+
+
+class Serve(db.Model):
+    __tablename__='services'    
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
+    service_name = db.Column(db.String(200),nullable=False)
+    service_price = db.Column(db.Float(45),nullable=False)
+   

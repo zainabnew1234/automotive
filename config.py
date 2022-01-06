@@ -1,7 +1,6 @@
 class Config(object):
     MERCHANT_ID='bghrebe5634583rhw'
 
-
 class ProductionConfig(Config):
     MERCHANT_ID='&^GYG4dyyrwrwefns'
     DATABASE_URI=''

@@ -3,7 +3,7 @@ import random,json,string,requests
 from flask import flash, redirect, render_template, request, session, url_for,abort
 from werkzeug.security import check_password_hash, generate_password_hash
 from bootcamp import db, fins, form,mail,Message
-from bootcamp.models import Book, Car, Cust,Pay
+from bootcamp.models import Book, Car, Cust,Pay, Serve
 
 
 def refno():
@@ -11,7 +11,6 @@ def refno():
     newname=''.join(sample_xters)
     return newname
         
-
 
 @fins.errorhandler(404)
 def mistake(error):
@@ -58,8 +57,6 @@ def sign():
         else:
                 return render_template('user/signup.html',up=up)  
 
-
- 
 
 @fins.route('/login',methods=['GET','POST'])
 def log():
@@ -170,7 +167,10 @@ def order():
                     db.session.add(x)
                     db.session.commit()
                     flash('Your order has been received and we will get back to you shortly')
-                    return redirect('/payment')
+                    ser=request.form.get('services')
+                    pat=db.session.query(Serve).filter(Serve.service_name==ser).first()
+                    return render_template('user/order.html',pat=pat)
+                    # return redirect('/payment')
 
         else:
             return  render_template('user/login.html')
